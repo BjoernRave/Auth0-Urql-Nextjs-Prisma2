@@ -4,7 +4,7 @@ import { ApolloContext } from '../context'
 
 export const authenticateRequest = (ctx: ApolloContext) => {
   const options: VerifyOptions = {
-    audience: 'https://api.avently.io',
+    audience: 'inventhora.com/api/graphql',
     issuer: `https://${process.env.AUTH0_DOMAIN}/`,
     algorithms: ['RS256'],
   }

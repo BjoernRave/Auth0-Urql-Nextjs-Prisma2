@@ -5,7 +5,7 @@ export default initAuth0({
   clientId: process.env.AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   scope: 'openid profile',
-  audience: 'https://api.avently.io',
+  audience: 'inventhora.com/api/graphql',
   redirectUri: 'http://localhost:3000/api/callback',
   postLogoutRedirectUri: 'http://localhost:3000/',
   session: {
