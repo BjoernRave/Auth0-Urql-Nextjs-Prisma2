@@ -30,7 +30,8 @@ export const authenticateRequest = (ctx: ApolloContext) => {
     })
   }
 
-  const token = ctx.req.headers.authorization.replace('Bearer ', '')
+  
+  const token = (ctx && ctx.req && ctx.req.headers && ctx.req.headers.authorization) ? ctx.req.headers.authorization.replace('Bearer ', '') : '';
   return new Promise((resolve, reject) => {
     verify(token, getKey, options, (err, decoded) => {
       if (err) {
@@ -38,8 +39,11 @@ export const authenticateRequest = (ctx: ApolloContext) => {
 
         return reject(err)
       }
-
-      resolve(decoded)
+      const userPermisisonsDecoded = {
+        permissions: ['user'],
+        ...decoded,
+      }
+      resolve(userPermisisonsDecoded)
     })
   })
 }

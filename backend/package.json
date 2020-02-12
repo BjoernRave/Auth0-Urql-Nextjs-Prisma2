@@ -10,6 +10,7 @@
     "generate:nexus": "ts-node --transpile-only src/schema",
     "postinstall": "npm -s run generate",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly src",
+    "dev:debug": "ts-node-dev --inspect --no-notify --respawn --transpileOnly src",
     "lift:save": "prisma2 lift save",
     "lift:up": "prisma2 lift up"
   },

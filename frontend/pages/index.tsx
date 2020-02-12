@@ -5,11 +5,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useClient } from "urql";
 
-const GET_POSTS = gql`
-  query GET_POSTS {
-    id
-    title
-    text
+const GET_POSTS = gql`{
+    posts {
+      id
+      title
+      text
+    }
   }
 `;
 
@@ -21,7 +22,7 @@ const Home: NextPage<Props> = () => {
 
   const requestPosts = async () => {
     const response = await urqlClient.query(GET_POSTS).toPromise();
-
+    console.log(response);
     if (response.error) console.log(response.error);
 
     setPosts(response.data.posts);
