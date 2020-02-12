@@ -4,7 +4,7 @@ import { Context } from '../context'
 
 export const authenticateRequest = (ctx: Context) => {
   const options: VerifyOptions = {
-    audience: 'inventhora.com/api/graphql',
+    audience: 'api.avently.io',
     issuer: `https://${process.env.AUTH0_DOMAIN}/`,
     algorithms: ['RS256'],
   }
