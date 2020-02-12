@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server'
 import { applyMiddleware } from 'graphql-middleware'
-import { IncomingMessage, ServerResponse } from 'http'
 import { createContext } from './context'
 import { permissions } from './permissions'
 import { schema } from './schema'
