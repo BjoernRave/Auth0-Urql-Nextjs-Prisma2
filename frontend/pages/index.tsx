@@ -5,7 +5,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useClient } from "urql";
 
-const GET_POSTS = gql`{
+export const GET_POSTS = gql`
+  {
     posts {
       id
       title
@@ -23,7 +24,7 @@ const Home: NextPage<Props> = () => {
   const requestPosts = async () => {
     const response = await urqlClient.query(GET_POSTS).toPromise();
     console.log(response);
-    if (response.error) console.log(response.error);
+    if (response.error) return console.log(response.error);
 
     setPosts(response.data.posts);
   };
@@ -31,7 +32,12 @@ const Home: NextPage<Props> = () => {
   return (
     <HomeWrapper>
       Welcome
-      <Link href="/api/login">Login</Link>
+      <Link href="/api/login">
+        <a>Login</a>
+      </Link>
+      <Link href="/posts">
+        <a>Posts</a>
+      </Link>
       <button onClick={requestPosts}>Make request</button>
       <ul>
         {posts.map(post => (

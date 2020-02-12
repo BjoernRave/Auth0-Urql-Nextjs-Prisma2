@@ -1,14 +1,14 @@
-import { Photon } from '@prisma/photon'
+import { PrismaClient } from '@prisma/client'
 import { ServerResponse } from 'http'
 import { authenticateRequest } from './lib/utils'
-const photon = new Photon()
+const prisma = new PrismaClient()
 
 export interface ApolloContext {
   req: any
   res: ServerResponse
 }
 export interface Context {
-  photon: Photon
+  prisma: PrismaClient
   req: any
   res: ServerResponse
   user: any
@@ -21,6 +21,6 @@ export async function createContext(ctx: ApolloContext) {
   return {
     ...ctx,
     user,
-    photon,
+    prisma,
   }
 }

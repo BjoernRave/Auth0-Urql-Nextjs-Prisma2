@@ -1,12 +1,6 @@
-import { cacheExchange } from "@urql/exchange-graphcache";
 import fetch from "isomorphic-unfetch";
-import {
-  createClient,
-  debugExchange,
-  dedupExchange,
-  fetchExchange,
-  ssrExchange
-} from "urql";
+import { createClient, dedupExchange, fetchExchange, ssrExchange } from "urql";
+import { cacheExchange } from "@urql/exchange-graphcache";
 import { isServer } from "./utils";
 
 let urqlClient: any;
@@ -33,7 +27,6 @@ export default function initUrqlClient(initialState: any, token?: string) {
       fetch: fetch,
       exchanges: [
         dedupExchange,
-        debugExchange,
         cacheExchange(),
         // Put the exchange returned by calling ssrExchange after your cacheExchange,
         // but before any asynchronous exchanges like the fetchExchange:

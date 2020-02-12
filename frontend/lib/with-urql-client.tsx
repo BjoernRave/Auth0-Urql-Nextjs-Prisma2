@@ -58,7 +58,6 @@ const withUrqlClient = Page => {
     // Extract query data from the urql store
     // Extract the SSR query data from urql's SSR cache
     const urqlState = ssrCache.extractData();
-    console.log("has accessToken gip", Boolean(accessToken));
 
     return {
       ...pageProps,
