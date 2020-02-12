@@ -1,8 +1,8 @@
 import { verify, VerifyOptions } from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
-import { Context } from '../context'
+import { ApolloContext } from '../context'
 
-export const authenticateRequest = (ctx: Context) => {
+export const authenticateRequest = (ctx: ApolloContext) => {
   const options: VerifyOptions = {
     audience: 'api.avently.io',
     issuer: `https://${process.env.AUTH0_DOMAIN}/`,

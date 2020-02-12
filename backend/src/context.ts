@@ -1,10 +1,9 @@
 import { Photon } from '@prisma/photon'
 import { ServerResponse } from 'http'
 import { authenticateRequest } from './lib/utils'
-import passport = require('passport')
 const photon = new Photon()
 
-export interface MicroContext {
+export interface ApolloContext {
   req: any
   res: ServerResponse
 }
@@ -14,8 +13,8 @@ export interface Context {
   res: ServerResponse
   user: any
 }
-export async function createContext(ctx: MicroContext) {
-  const user = await authenticateRequest(ctx.req).catch(err =>
+export async function createContext(ctx: ApolloContext) {
+  const user = await authenticateRequest(ctx).catch(err =>
     console.log('error authenitcating', err),
   )
 
